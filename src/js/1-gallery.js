@@ -66,25 +66,38 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map((image) => {
-  const item = document.createElement("li");
-  item.classList.add("gallery-item");
+// Оновлена розмітка елемента галереї
+const galleryMarkup = images.map(
+  (image) => `
+    <li class="gallery-item">
+      <a class="gallery-link" href="${image.original}">
+        <img
+          class="gallery-image"
+          src="${image.preview}"
+          alt="${image.description}"
+        />
+      </a>
+    </li>
+  `
+).join("");
 
-  const link = document.createElement("a");
-  link.classList.add("gallery-link");
-  link.href = image.preview;
+gallery.insertAdjacentHTML("beforeend", galleryMarkup);
 
-  const img = document.createElement("img");
-  img.classList.add("gallery-image");
-  img.src = image.preview;
-  img.alt = image.description;
+// Додатковий імпорт стилів SimpleLightbox
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
-  link.appendChild(img);
-  item.appendChild(link);
-
-  return item;
+// Ініціалізація SimpleLightbox після створення галереї
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionDelay: 250, // Затримка відображення підпису
+  captionPosition: "bottom", // Позиція підпису
 });
 
-gallery.append(...galleryItems);
+// Додавання підпису до модального вікна
+lightbox.on("show.simplelightbox", function (e) {
+  const captionElement = document.createElement("p");
+  captionElement.classList.add("lightbox-caption");
+  captionElement.textContent = e.target.getAttribute("alt");
 
-let lightbox = new SimpleLightbox(".gallery a");
+  e.lightbox.element.appendChild(captionElement);
+});
