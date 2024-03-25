@@ -6,5 +6,5 @@ import"./assets/modulepreload-polyfill-3cfb730f.js";import{S as i}from"./assets/
             alt="${o.description}"
           />
         </a>
-      </li>`).join("")}function n(){const t=e(p);a.insertAdjacentHTML("beforeend",t)}n();const c=new i(".gallery a",{captionsData:"alt",captionDelay:250});c.on("shown.simplelightbox",function(t){const o=document.createElement("p");o.classList.add("lightbox-caption"),o.textContent=t.target.getAttribute("alt"),t.lightbox.element.appendChild(o),t.lightbox&&t.lightbox.element&&t.lightbox.element.appendChild(o)});
+      </li>`).join("")}function n(){const t=e(p);a.insertAdjacentHTML("beforeend",t)}n();const c=new i(".gallery a",{captionsData:"alt",captionDelay:250});c.on("shown.simplelightbox",function(t){const o=document.createElement("p");o.classList.add("lightbox-caption"),o.textContent=t.target.getAttribute("alt"),t.lightbox&&t.lightbox.element&&t.lightbox.element.appendChild(o)});
 //# sourceMappingURL=commonHelpers.js.map
