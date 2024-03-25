@@ -102,8 +102,7 @@ lightbox.on('shown.simplelightbox', function (e) {
   captionElement.classList.add('lightbox-caption');
   captionElement.textContent = e.target.getAttribute('alt');
 
-  e.lightbox.element.appendChild(captionElement);
   if (e.lightbox && e.lightbox.element) {
-  e.lightbox.element.appendChild(captionElement);
-}
+    e.lightbox.element.appendChild(captionElement);
+  }
 });
