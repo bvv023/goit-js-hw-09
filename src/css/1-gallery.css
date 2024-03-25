@@ -11,8 +11,10 @@
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
-  padding-left: 156px;
-  padding-right: 156px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1128px;
+  max-height: 650px;
 }
 
 .gallery-item {
@@ -43,7 +45,27 @@ img {
   color: #242424;
   margin: 0 24px 24px 24px;
   padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.87);
+  background-color: rgba(46, 47, 66, 0.8);
   border-radius: 4px;
   text-align: center;
+}
+
+.sl-wrapper {
+  background-color: rgba(46, 47, 66, 0.8);
+}
+
+.sl-wrapper .sl-close {
+  color: #fff !important;
+}
+
+.sl-wrapper .sl-counter {
+  color: #fff !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-next {
+  color: #fff !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev {
+  color: #fff !important;
 }

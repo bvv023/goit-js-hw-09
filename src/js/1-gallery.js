@@ -1,3 +1,6 @@
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const images = [
   {
     preview:
@@ -64,40 +67,40 @@ const images = [
   },
 ];
 
-const gallery = document.querySelector(".gallery");
+const galleryList = document.querySelector('.gallery');
 
-// Оновлена розмітка елемента галереї
-const galleryMarkup = images.map(
-  (image) => `
-    <li class="gallery-item">
-      <a class="gallery-link" href="${image.original}">
-        <img
-          class="gallery-image"
-          src="${image.preview}"
-          alt="${image.description}"
-        />
-      </a>
-    </li>
-  `
-).join("");
+function createGalleryMarkup(images) {
+  return images
+    .map(image => {
+      return `<li class="gallery-item">
+        <a class="gallery-link" href="${image.original}">
+          <img
+            class="gallery-image"
+            src="${image.preview}"
+            alt="${image.description}"
+          />
+        </a>
+      </li>`;
+    })
+    .join('');
+}
 
-gallery.insertAdjacentHTML("beforeend", galleryMarkup);
+function renderGallery() {
+  const imagesMarkup = createGalleryMarkup(images);
+  galleryList.insertAdjacentHTML('beforeend', imagesMarkup);
+}
 
-// Додатковий імпорт стилів SimpleLightbox
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+renderGallery();
 
-// Ініціалізація SimpleLightbox після створення галереї
-const lightbox = new SimpleLightbox(".gallery a", {
-  captionDelay: 250, // Затримка відображення підпису
-  captionPosition: "bottom", // Позиція підпису
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
 });
 
-// Додавання підпису до модального вікна
-lightbox.on("show.simplelightbox", function (e) {
-  const captionElement = document.createElement("p");
-  captionElement.classList.add("lightbox-caption");
-  captionElement.textContent = e.target.getAttribute("alt");
+lightbox.on('shown.simplelightbox', function (e) {
+  const captionElement = document.createElement('p');
+  captionElement.classList.add('lightbox-caption');
+  captionElement.textContent = e.target.getAttribute('alt');
 
   e.lightbox.element.appendChild(captionElement);
 });
