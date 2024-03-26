@@ -96,13 +96,3 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-
-lightbox.on('shown.simplelightbox', function (e) {
-  const captionElement = document.createElement('p');
-  captionElement.classList.add('lightbox-caption');
-  captionElement.textContent = e.target.getAttribute('alt');
-
-  if (e.lightbox && e.lightbox.element) {
-    e.lightbox.element.appendChild(captionElement);
-  }
-});
